@@ -3,8 +3,9 @@
  */
 package com.py.compiladores.estructuras;
 
-import com.py.compiladores.analisis.Alfabeto;
 import java.util.HashMap;
+
+import com.py.compiladores.analisis.Alfabeto;
 
 /**
  * Esta clase representa un estado para un Automata Finito.

@@ -4,8 +4,6 @@
 package com.py.compiladores.estructuras;
 
 import com.py.compiladores.analisis.Alfabeto;
-import com.py.compiladores.estructuras.Automata;
-import com.py.compiladores.estructuras.TablaTransicion;
 
 
 /**
