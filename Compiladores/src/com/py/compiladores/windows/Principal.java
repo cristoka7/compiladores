@@ -117,7 +117,7 @@ public class Principal {
 		JEditorPane dtrpnCristianAceval = new JEditorPane();
 		dtrpnCristianAceval.setFont(new Font("Lucida Sans", Font.ITALIC, 14));
 		dtrpnCristianAceval.setText("Cristian Aceval - Victor Franco - Todos los derechos reservados");
-		dtrpnCristianAceval.setBounds(36, 299, 397, 20);
+		dtrpnCristianAceval.setBounds(10, 299, 451, 20);
 		frmTrabajoDeCompiladores.getContentPane().add(dtrpnCristianAceval);
 	}
 }
