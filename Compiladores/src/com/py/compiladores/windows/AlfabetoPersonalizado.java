@@ -24,6 +24,9 @@ import javax.swing.JButton;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
+import javax.swing.JEditorPane;
+import java.awt.Toolkit;
 
 public class AlfabetoPersonalizado extends JFrame {
 
@@ -33,6 +36,8 @@ public class AlfabetoPersonalizado extends JFrame {
 	 * Create the frame.
 	 */
 	public AlfabetoPersonalizado() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(AlfabetoPersonalizado.class.getResource("/com/sun/java/swing/plaf/motif/icons/DesktopIcon.gif")));
+		setResizable(false);
 		setTitle("Alfabeto Personalizado");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 479, 357);
@@ -42,27 +47,31 @@ public class AlfabetoPersonalizado extends JFrame {
 		contentPane.setLayout(null);
 		
 		final TextField textFieldAlfabeto = new TextField();
-		textFieldAlfabeto.setBounds(133, 82, 243, 22);
+		textFieldAlfabeto.setBounds(175, 125, 278, 22);
 		contentPane.add(textFieldAlfabeto);
 		
-		Label label = new Label("Alfabeto");
-		label.setBounds(10, 82, 117, 22);
+		Label label = new Label("Alfabeto :");
+		label.setFont(new Font("Tahoma", Font.BOLD, 14));
+		label.setBounds(10, 125, 117, 22);
 		contentPane.add(label);
 		
-		Label label_1 = new Label("Expresion Regular");
-		label_1.setBounds(10, 146, 117, 22);
+		Label label_1 = new Label("Expresion Regular :");
+		label_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		label_1.setBounds(10, 176, 144, 22);
 		contentPane.add(label_1);
 		
 		final TextField textFieldExpReg = new TextField();
-		textFieldExpReg.setBounds(133, 146, 243, 22);
+		textFieldExpReg.setBounds(175, 176, 278, 22);
 		contentPane.add(textFieldExpReg);
 		
 		Label label_2 = new Label("Ingrese los Datos");
-		label_2.setFont(new Font("Dialog", Font.BOLD, 15));
-		label_2.setBounds(165, 26, 147, 22);
+		label_2.setAlignment(Label.CENTER);
+		label_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		label_2.setBounds(180, 58, 147, 22);
 		contentPane.add(label_2);
 		
 		JButton btnProcesarEntrada = new JButton("Procesar Entrada");
+		btnProcesarEntrada.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnProcesarEntrada.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -81,13 +90,28 @@ public class AlfabetoPersonalizado extends JFrame {
 					JTextArea textArea_1 = new JTextArea();
 					textArea_1.setEditable(false);
 					textArea_1.setText(e.getMessage());
-					frameDeError.add(textArea_1);
+					frameDeError.getContentPane().add(textArea_1);
 					frameDeError.setVisible(true);
 					//e.printStackTrace();
 				}
 			}
 		});
-		btnProcesarEntrada.setBounds(165, 228, 147, 47);
+		btnProcesarEntrada.setBounds(175, 227, 185, 47);
 		contentPane.add(btnProcesarEntrada);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setText("                   COMPI-WIN");
+		textArea.setTabSize(10);
+		textArea.setFont(new Font("Monospaced", Font.BOLD, 16));
+		textArea.setEditable(false);
+		textArea.setBackground(new Color(60, 179, 113));
+		textArea.setBounds(0, 0, 473, 32);
+		contentPane.add(textArea);
+		
+		JEditorPane editorPane = new JEditorPane();
+		editorPane.setText("Cristian Aceval - Victor Franco - Todos los derechos reservados");
+		editorPane.setFont(new Font("Lucida Sans", Font.ITALIC, 12));
+		editorPane.setBounds(74, 297, 379, 20);
+		contentPane.add(editorPane);
 	}
 }
