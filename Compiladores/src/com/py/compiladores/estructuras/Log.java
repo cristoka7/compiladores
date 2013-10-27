@@ -20,7 +20,7 @@ public class Log {
    
     /**
      * Construye un nuevo <code>Log</code> que
-     * no contiene ningún texto.
+     * no contiene ningun texto.
      */
     public Log() {
         cadenas = new Vector<String>();

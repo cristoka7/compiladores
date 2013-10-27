@@ -26,7 +26,7 @@ public class Main {
         System.out.printf("AFN:\n%s", salida);
         
                
-        /* Tabla transicion del AFN */
+        /* Imprimir la Tabla transicion del AFN */
         System.out.println();
         TablaTransicion tabla = salida.getTablaTransicion();
         
@@ -53,9 +53,9 @@ public class Main {
         System.out.println();
         AFD afd = Subconjuntos.getAFD(salida);
         System.out.printf("AFD:\n%s", afd);
-        System.out.printf("\nEstadosD:\n%s", afd.estadosDtoString());
+        System.out.printf("\nEstados AFD:\n%s", afd.estadosDtoString());
        
-        /* Tabla transicion del AFD */
+        /* Imprimir la Tabla transicion del AFD */
         System.out.println();
         TablaTransicion tabla2 = afd.getTablaTransicion();
        

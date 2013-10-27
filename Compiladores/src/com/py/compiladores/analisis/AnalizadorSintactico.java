@@ -35,7 +35,7 @@ public class AnalizadorSintactico {
     private Token preanalisis;
    
     /**
-     * Contador de tokens recibidos. Útil para
+     * Contador de tokens recibidos. Util para
      * indicar donde ocurren los errores.
      */
     private int contadorTokens;
@@ -54,7 +54,7 @@ public class AnalizadorSintactico {
     /**
      * Inicia el analisis sintactico (traduccion).
      * @return Un AFN que representa a la expresion regular de entrada.
-     * @throws java.lang.Exception En caso de encontrar algún error
+     * @throws java.lang.Exception En caso de encontrar algun error
      * de sintaxis en la expresion regular de entrada.
      */
     public AFN analizar() throws Exception {

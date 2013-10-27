@@ -18,7 +18,7 @@ public class Alfabeto implements Iterable<String> {
     /**
      * Cadena que representa el simbolo vacio.
      */
-    public static final String VACIO = "â‚¬";
+    public static final String VACIO = "é";
    
     /**
      * Conjunto de simbolos del alfabeto.
