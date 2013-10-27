@@ -41,6 +41,7 @@ public class Principal {
 			public void run() {
 				try {
 					Principal window = new Principal();
+					window.frmTrabajoDeCompiladores.setLocationRelativeTo(null);
 					window.frmTrabajoDeCompiladores.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -83,6 +84,7 @@ public class Principal {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				AlfabetoPersonalizado frame = new AlfabetoPersonalizado();
+				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
 			}
 		});
@@ -100,6 +102,7 @@ public class Principal {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				AlfabetoPorDefecto frameDefecto = new AlfabetoPorDefecto();
+				frameDefecto.setLocationRelativeTo(null);
 				frameDefecto.setVisible(true);
 			}
 		});

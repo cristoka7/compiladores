@@ -30,7 +30,7 @@ public class AlfabetoPorDefecto extends JFrame {
 	public AlfabetoPorDefecto() {
 		setTitle("Alfabeto Predeterminado");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 443, 300);
+		setBounds(100, 100, 480, 360);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -66,6 +66,7 @@ public class AlfabetoPorDefecto extends JFrame {
 				Salidas frame;
 				try {
 					frame = new Salidas(alfabeto, expReg);
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
@@ -77,6 +78,7 @@ public class AlfabetoPorDefecto extends JFrame {
 					textArea_1.setEditable(false);
 					textArea_1.setText(e.getMessage());
 					frameDeError.getContentPane().add(textArea_1);
+					frameDeError.setLocationRelativeTo(null);
 					frameDeError.setVisible(true);
 					//e.printStackTrace();
 				}

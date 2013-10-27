@@ -6,10 +6,12 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
+import com.py.compiladores.algoritmos.Minimizacion;
 import com.py.compiladores.algoritmos.Subconjuntos;
 import com.py.compiladores.analisis.Alfabeto;
 import com.py.compiladores.analisis.AnalizadorSintactico;
 import com.py.compiladores.estructuras.AFD;
+import com.py.compiladores.estructuras.AFDMin;
 import com.py.compiladores.estructuras.AFN;
 import com.py.compiladores.estructuras.Log;
 import com.py.compiladores.estructuras.TablaTransicion;
@@ -29,7 +31,7 @@ public class Salidas extends JFrame {
 	public Salidas(String alfabeto, String ExpReg) throws Exception {
 		setTitle("Salidas");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 500, 439);
+		setBounds(100, 100, 800, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -45,7 +47,7 @@ public class Salidas extends JFrame {
 		AFN salida = as.analizar();
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 11, 464, 366);
+		tabbedPane.setBounds(10, 0, 750, 650);
 		/*Aqui el primer tab-panel correspondiente al AFN*/
 		JPanel panelAFN = new JPanel();
 		tabbedPane.addTab("AFN", panelAFN);
@@ -53,7 +55,7 @@ public class Salidas extends JFrame {
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 0, 459, 338);
+		scrollPane.setBounds(0, 0, 750, 630);
 		scrollPane.setAutoscrolls(true);
 		panelAFN.add(scrollPane);
 		
@@ -69,7 +71,7 @@ public class Salidas extends JFrame {
 		panelTransicionAFN.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(0, 0, 459, 338);
+		scrollPane_1.setBounds(0, 0, 750, 630);
 		scrollPane_1.setAutoscrolls(true);
 		panelTransicionAFN.add(scrollPane_1);
 		
@@ -103,7 +105,7 @@ public class Salidas extends JFrame {
 		
 		
 		JScrollPane scrollPaneDerivaciones = new JScrollPane();
-		scrollPaneDerivaciones.setBounds(0, 0, 459, 338);
+		scrollPaneDerivaciones.setBounds(0, 0, 750, 630);
 		scrollPaneDerivaciones.setAutoscrolls(true);
 		panelDerivaciones.add(scrollPaneDerivaciones);
 		
@@ -115,12 +117,12 @@ public class Salidas extends JFrame {
 		
 		/*Aqui el cuarto tab-panel correspondiente al AFD*/
 		JPanel panelAFD = new JPanel();
-		tabbedPane.addTab("AFD", panelAFD);
+		tabbedPane.addTab("AFD Equivalente", panelAFD);
 		panelAFD.setLayout(null);
 		
 		
 		JScrollPane scrollPaneAFD = new JScrollPane();
-		scrollPaneAFD.setBounds(0, 0, 459, 338);
+		scrollPaneAFD.setBounds(0, 0, 750, 630);
 		scrollPaneAFD.setAutoscrolls(true);
 		panelAFD.add(scrollPaneAFD);
 		
@@ -131,6 +133,66 @@ public class Salidas extends JFrame {
 		textAreaAFD.setText(afd.toString());
 		scrollPaneAFD.setViewportView(textAreaAFD);
 		/*Hasta aqui  el cuarto tab-panel correspondiente al AFD*/
+		
+		/*Aqui el quinto tab-panel correspondiente a la tabla de Transicion AFD*/
+		JPanel panelTransicionAFD = new JPanel();
+		tabbedPane.addTab("Tabla Transicion AFD", panelTransicionAFD);
+		panelTransicionAFD.setLayout(null);
+		
+		
+		JScrollPane scrollPaneTransAFD = new JScrollPane();
+		scrollPaneTransAFD.setBounds(0, 0, 750, 630);
+		scrollPaneTransAFD.setAutoscrolls(true);
+		panelTransicionAFD.add(scrollPaneTransAFD);
+		
+		 /* Imprimir la Tabla transicion del AFD */
+		Log output1 = new Log();
+        TablaTransicion tabla2 = afd.getTablaTransicion();
+       
+        for (int i=0; i < tabla2.getColumnCount(); i++)
+        	output1.agregar(tabla2.getColumnName(i) + "\t\t" );
+       
+        output1.nuevaLinea();
+        for (int i=0; i < tabla2.getRowCount(); i++) {
+            for (int j=0; j < tabla2.getColumnCount(); j++)
+            	output1.agregar(tabla2.getValueAt(i, j)+ "\t\t");
+           
+            output1.nuevaLinea();
+        }
+        
+		
+		JTextArea textAreaTransAFD = new JTextArea();
+		textAreaTransAFD.setEditable(false);
+		textAreaTransAFD.setText(output1.toString());
+		scrollPaneTransAFD.setViewportView(textAreaTransAFD);
+		/*Hasta aqui  el quinto tab-panel correspondiente a la tabla de Transicion AFD*/
+		
+		/*Aqui el sexto tab-panel correspondiente al proceso de minimizacion*/
+		JPanel panelAFDMinim = new JPanel();
+		tabbedPane.addTab("AFD Minimo Equiv.", panelAFDMinim);
+		panelAFDMinim.setLayout(null);
+		
+		
+		JScrollPane scrollPaneAFDMinim = new JScrollPane();
+		scrollPaneAFDMinim.setBounds(0, 0, 750, 630);
+		scrollPaneAFDMinim.setAutoscrolls(true);
+		panelAFDMinim.add(scrollPaneAFDMinim);
+		
+		AFDMin afdMin = Minimizacion.getAFDminimo(afd);
+		Log outputMinimo = new Log();
+		outputMinimo.agregar("AFD Post Inalcanzables ( ):\n \n");
+		outputMinimo.agregar(afdMin.inalcanzablesEliminados() ? "<>" : "== "+ afdMin.getAfdPostInalcanzables());
+		outputMinimo.nuevaLinea();
+        outputMinimo.agregar("AFD Post Minimizacion:\n \n" + afdMin.getAfdPostMinimizacion());
+        outputMinimo.nuevaLinea();
+        outputMinimo.agregar("AFD Post Identidades ( ):\n \n");
+        outputMinimo.agregar(afdMin.identidadesEliminados() ? "<>" : "== "+ afdMin.getAfdPostIdentidades());
+		
+		JTextArea textAreaAFDMinim = new JTextArea();
+		textAreaAFDMinim.setEditable(false);
+		textAreaAFDMinim.setText(outputMinimo.toString());
+		scrollPaneAFDMinim.setViewportView(textAreaAFDMinim);
+		/*Hasta aqui  el sexto tab-panel correspondiente al proceso de minimizacion*/
 		
 		
 		contentPane.add(tabbedPane);
