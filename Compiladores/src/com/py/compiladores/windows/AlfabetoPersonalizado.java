@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
@@ -73,7 +74,16 @@ public class AlfabetoPersonalizado extends JFrame {
 					frame.setVisible(true);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					JFrame frameDeError = new JFrame();
+					frameDeError.setBounds(100, 100, 487, 369);
+					frameDeError.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+					frameDeError.setTitle("ERROR");
+					JTextArea textArea_1 = new JTextArea();
+					textArea_1.setEditable(false);
+					textArea_1.setText(e.getMessage());
+					frameDeError.add(textArea_1);
+					frameDeError.setVisible(true);
+					//e.printStackTrace();
 				}
 			}
 		});

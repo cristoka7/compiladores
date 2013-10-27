@@ -23,6 +23,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ButtonGroup;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Principal {
 
@@ -82,7 +84,11 @@ public class Principal {
 		btnPersonalizado.setIcon(new ImageIcon(Principal.class.getResource("/com/sun/java/swing/plaf/windows/icons/Computer.gif")));
 		frmTrabajoDeCompiladores.getContentPane().add(btnPersonalizado);
 		
-		JButton btnDefecto = new JButton("Defecto");
+		JButton btnDefecto = new JButton("Predeterminado");
+		btnDefecto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnDefecto.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -103,7 +109,7 @@ public class Principal {
 		
 		JEditorPane dtrpnCristianAceval = new JEditorPane();
 		dtrpnCristianAceval.setText("Cristian Aceval - Victor Franco - Todos los derechos reservados");
-		dtrpnCristianAceval.setBounds(72, 299, 315, 20);
+		dtrpnCristianAceval.setBounds(36, 299, 397, 20);
 		frmTrabajoDeCompiladores.getContentPane().add(dtrpnCristianAceval);
 	}
 }

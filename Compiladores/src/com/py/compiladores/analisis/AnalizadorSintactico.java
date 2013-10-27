@@ -65,7 +65,7 @@ public class AnalizadorSintactico {
        
         // Logging
         log.vaciar();
-        log.agregar("Derivaciones realizadas por el parser".toUpperCase()).nuevaLinea();
+        //log.agregar("Derivaciones realizadas por el parser".toUpperCase()).nuevaLinea();
         log.agregar("-------------------------------------").nuevaLinea().nuevaLinea();
        
         AFN afn = ExprReg();
@@ -73,7 +73,7 @@ public class AnalizadorSintactico {
         afn.setExprReg(analizadorLexico.getExpresionRegular());
        
         if (preanalisis.getIdentificador() != TokenExprReg.FINAL)
-            error("Caracter de finalizacion invalido");
+            error("Caracter invalido");
        
         return afn;
     }
