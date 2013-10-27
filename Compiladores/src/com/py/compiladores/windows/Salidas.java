@@ -6,6 +6,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
+
+
 import com.py.compiladores.algoritmos.Minimizacion;
 import com.py.compiladores.algoritmos.Subconjuntos;
 import com.py.compiladores.analisis.Alfabeto;
@@ -13,15 +15,27 @@ import com.py.compiladores.analisis.AnalizadorSintactico;
 import com.py.compiladores.estructuras.AFD;
 import com.py.compiladores.estructuras.AFDMin;
 import com.py.compiladores.estructuras.AFN;
+import com.py.compiladores.estructuras.Automata;
 import com.py.compiladores.estructuras.Log;
 import com.py.compiladores.estructuras.TablaTransicion;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
+import javax.swing.JLabel;
+
+import java.awt.TextField;
+
+import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Salidas extends JFrame {
 
 	private JPanel contentPane;
+	private javax.swing.JLabel Imagen;
 
 
 	/**
@@ -44,7 +58,7 @@ public class Salidas extends JFrame {
          *  CONVERSION REGEX -> AFN
          *  ALGORITMO DE THOMPSON
          */ 
-		AFN salida = as.analizar();
+		final AFN salida = as.analizar();
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(10, 0, 850, 650);
@@ -126,7 +140,7 @@ public class Salidas extends JFrame {
 		scrollPaneAFD.setAutoscrolls(true);
 		panelAFD.add(scrollPaneAFD);
 		
-		AFD afd = Subconjuntos.getAFD(salida);
+		final AFD afd = Subconjuntos.getAFD(salida);
 		
 		JTextArea textAreaAFD = new JTextArea();
 		textAreaAFD.setEditable(false);
@@ -212,8 +226,147 @@ public class Salidas extends JFrame {
 		scrollPaneAFDProcMin.setViewportView(textAreaAFDProcMin);
 		/*Hasta aqui  el septimo tab-panel correspondiente a la impresion del proceso de minimizacion*/
 		
+		/*Aqui el octavo tab-panel correspondiente a la validacion de cadenas*/
+		JPanel panelValid = new JPanel();
+		tabbedPane.addTab("Validacion de AFN", panelValid);
+		panelValid.setLayout(null);
+		
+		JLabel lblCadenaAValidar = new JLabel("Cadena a Validar");
+		lblCadenaAValidar.setBounds(0, 23, 108, 22);
+		panelValid.add(lblCadenaAValidar);
+		
+		final TextField textField = new TextField();
+		textField.setBounds(112, 23, 175, 22);
+		panelValid.add(textField);
+		
+		JScrollPane scrollPaneValid = new JScrollPane();
+		scrollPaneValid.setBounds(293, 0, 510, 300);
+		scrollPaneValid.setAutoscrolls(true);
+		panelValid.add(scrollPaneValid);
+		
+		final JTextArea textArea_2 = new JTextArea();
+		textArea_2.setBounds(293, 23, 498, 272);
+		scrollPaneValid.setViewportView(textArea_2);
+		
+		/*Aqui se realiza el proceso de Validacion de AFN*/
+		JButton btnNewButton = new JButton("Validar");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+
+				String valor = textField.getText();
+		        if (valor == null)
+		            valor = "";
+
+		        // Verificar cadena con el Automata correspondiente
+		        com.py.compiladores.algoritmos.ResultadoValidacion Result = null;
+		        
+		        Result = com.py.compiladores.algoritmos.Validacion.validarAFN((AFN) salida, valor);
+
+		        String mensaje = null;
+		        if (!Result.esValido()) {
+		            mensaje = "ERROR: La cadena ingresada NO ES ACEPTADA.\n\n";
+		            String Resto = Result.getEntradaFaltante();
+		            if (!Resto.isEmpty()) {
+		                mensaje += "Se ha recorrido " + Result.getCamino() + " y no se " +
+		                        "ha podido seguir avanzando. FALTA CONSUMIR: \"" + Resto + "\".";
+		            } else {
+		                mensaje += "Se ha recorrido " + Result.getCamino() + " y se ha consumido" +
+		                        " la cadena de entrada sin llegar a un ESTADO FINAL. \n";
+		            }
+		        } else {
+		            mensaje = "OK. La cadena es ACEPTADA.\nSe ha recorrido " + Result.getCamino();
+		        }
+		        textArea_2.setText("" + mensaje);
+			}
+		});
+		btnNewButton.setBounds(85, 106, 114, 53);
+		panelValid.add(btnNewButton);
+		/*Hasta aqui el noveno tab-panel correspondiente a la validacion de cadenas*/
+		
+		/*Aqui el octavo tab-panel correspondiente a la validacion de cadenas AFD*/
+		JPanel panelValidAFD = new JPanel();
+		tabbedPane.addTab("Validacion de AFD", panelValidAFD);
+		panelValidAFD.setLayout(null);
+		
+		JLabel lblCadenaAValidarAFD = new JLabel("Cadena a Validar");
+		lblCadenaAValidarAFD.setBounds(0, 23, 108, 22);
+		panelValidAFD.add(lblCadenaAValidarAFD);
+		
+		final TextField textFieldAFD = new TextField();
+		textFieldAFD.setBounds(112, 23, 175, 22);
+		panelValidAFD.add(textFieldAFD);
+		
+		JScrollPane scrollPaneValidAFD = new JScrollPane();
+		scrollPaneValidAFD.setBounds(293, 0, 510, 300);
+		scrollPaneValidAFD.setAutoscrolls(true);
+		panelValidAFD.add(scrollPaneValidAFD);
+		
+		final JTextArea textArea_AFD = new JTextArea();
+		textArea_AFD.setBounds(293, 23, 498, 272);
+		scrollPaneValidAFD.setViewportView(textArea_AFD);
+		
+		/*Aqui se realiza el proceso de Validacion de AFN*/
+		JButton btnNewButtonAFD = new JButton("Validar AFD");
+		btnNewButtonAFD.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+
+				String valor = textFieldAFD.getText();
+		        if (valor == null)
+		            valor = "";
+
+		        // Verificar cadena con el Automata AFD correspondiente
+		        com.py.compiladores.algoritmos.ResultadoValidacion Result = null;
+		        
+		        Result = com.py.compiladores.algoritmos.Validacion.validarAFD((AFD) afd, valor);
+
+		        String mensaje = null;
+		        if (!Result.esValido()) {
+		            mensaje = "ERROR: La cadena ingresada NO ES ACEPTADA.\n\n";
+		            String Resto = Result.getEntradaFaltante();
+		            if (!Resto.isEmpty()) {
+		                mensaje += "Se ha recorrido " + Result.getCamino() + " y no se " +
+		                        "ha podido seguir avanzando. FALTA CONSUMIR: \"" + Resto + "\".";
+		            } else {
+		                mensaje += "Se ha recorrido " + Result.getCamino() + " y se ha consumido" +
+		                        " la cadena de entrada sin llegar a un ESTADO FINAL. \n";
+		            }
+		        } else {
+		            mensaje = "OK. La cadena es ACEPTADA.\nSe ha recorrido " + Result.getCamino();
+		        }
+		        textArea_AFD.setText("" + mensaje);
+			}
+		});
+		btnNewButtonAFD.setBounds(85, 106, 114, 53);
+		panelValidAFD.add(btnNewButtonAFD);
+		/*Hasta aqui el noveno tab-panel correspondiente a la validacion de cadenas AFD*/
+		
+		
+		/*Aqui la insercion de la imagen AFN*/
+		JPanel panelImagen = new JPanel();
+		tabbedPane.addTab("Grafo AFN", panelImagen);
+		panelImagen.setLayout(null);
+		
+		
+		JScrollPane scrollPaneImagen = new JScrollPane();
+		scrollPaneImagen.setBounds(0, 0, 850, 610);
+		scrollPaneImagen.setAutoscrolls(true);
+		panelImagen.add(scrollPaneImagen);
+
+		Imagen = new javax.swing.JLabel();
+		Imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        //Imagen.setIcon(resourceMap.getIcon("Imagen.icon")); // NOI18N
+        //Imagen.setText(resourceMap.getString("Imagen.text")); // NOI18N
+        Imagen.setName("Imagen"); // NOI18N
+        scrollPaneImagen.setViewportView(Imagen);
+        
+        Grafo brocha = new Grafo((Automata) salida);
+        this.Imagen.setIcon(brocha.ManejarImagen(null));
+		
 		contentPane.add(tabbedPane);
 		
 		
 	}
 }
+

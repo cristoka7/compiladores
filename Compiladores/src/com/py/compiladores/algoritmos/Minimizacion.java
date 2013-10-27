@@ -41,7 +41,7 @@ public class Minimizacion {
 	public static AFDMin getAFDminimo(AFD afdOriginal) {
 		// Logging
 		log.vaciar();
-		log.agregar("Procedimiento de minimizacion".toUpperCase()).nuevaLinea();
+		log.agregar("Proceso de minimizacion".toUpperCase()).nuevaLinea();
 		log.agregar("-----------------------------").nuevaLinea().nuevaLinea();
 
 		/* Eliminamos los estados inalcanzables */

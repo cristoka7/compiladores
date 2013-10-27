@@ -94,7 +94,7 @@ public class AlfabetoPersonalizado extends JFrame {
 					frameDeError.getContentPane().add(textArea_1);
 					frameDeError.setLocationRelativeTo(null);
 					frameDeError.setVisible(true);
-					//e.printStackTrace();
+					e.printStackTrace();
 				}
 			}
 		});
