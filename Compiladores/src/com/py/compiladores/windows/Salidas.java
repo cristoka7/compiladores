@@ -31,7 +31,7 @@ public class Salidas extends JFrame {
 	public Salidas(String alfabeto, String ExpReg) throws Exception {
 		setTitle("Salidas");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 800, 700);
+		setBounds(100, 100, 900, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -47,7 +47,7 @@ public class Salidas extends JFrame {
 		AFN salida = as.analizar();
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 0, 750, 650);
+		tabbedPane.setBounds(10, 0, 850, 650);
 		/*Aqui el primer tab-panel correspondiente al AFN*/
 		JPanel panelAFN = new JPanel();
 		tabbedPane.addTab("AFN", panelAFN);
@@ -55,7 +55,7 @@ public class Salidas extends JFrame {
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 0, 750, 630);
+		scrollPane.setBounds(0, 0, 850, 610);
 		scrollPane.setAutoscrolls(true);
 		panelAFN.add(scrollPane);
 		
@@ -71,7 +71,7 @@ public class Salidas extends JFrame {
 		panelTransicionAFN.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(0, 0, 750, 630);
+		scrollPane_1.setBounds(0, 0, 850, 610);
 		scrollPane_1.setAutoscrolls(true);
 		panelTransicionAFN.add(scrollPane_1);
 		
@@ -105,7 +105,7 @@ public class Salidas extends JFrame {
 		
 		
 		JScrollPane scrollPaneDerivaciones = new JScrollPane();
-		scrollPaneDerivaciones.setBounds(0, 0, 750, 630);
+		scrollPaneDerivaciones.setBounds(0, 0, 850, 610);
 		scrollPaneDerivaciones.setAutoscrolls(true);
 		panelDerivaciones.add(scrollPaneDerivaciones);
 		
@@ -122,7 +122,7 @@ public class Salidas extends JFrame {
 		
 		
 		JScrollPane scrollPaneAFD = new JScrollPane();
-		scrollPaneAFD.setBounds(0, 0, 750, 630);
+		scrollPaneAFD.setBounds(0, 0, 850, 610);
 		scrollPaneAFD.setAutoscrolls(true);
 		panelAFD.add(scrollPaneAFD);
 		
@@ -141,7 +141,7 @@ public class Salidas extends JFrame {
 		
 		
 		JScrollPane scrollPaneTransAFD = new JScrollPane();
-		scrollPaneTransAFD.setBounds(0, 0, 750, 630);
+		scrollPaneTransAFD.setBounds(0, 0, 850, 610);
 		scrollPaneTransAFD.setAutoscrolls(true);
 		panelTransicionAFD.add(scrollPaneTransAFD);
 		
@@ -174,7 +174,7 @@ public class Salidas extends JFrame {
 		
 		
 		JScrollPane scrollPaneAFDMinim = new JScrollPane();
-		scrollPaneAFDMinim.setBounds(0, 0, 750, 630);
+		scrollPaneAFDMinim.setBounds(0, 0, 850, 610);
 		scrollPaneAFDMinim.setAutoscrolls(true);
 		panelAFDMinim.add(scrollPaneAFDMinim);
 		
@@ -194,6 +194,23 @@ public class Salidas extends JFrame {
 		scrollPaneAFDMinim.setViewportView(textAreaAFDMinim);
 		/*Hasta aqui  el sexto tab-panel correspondiente al proceso de minimizacion*/
 		
+		/*Aqui el septimo tab-panel correspondiente a la impresion del proceso de minimizacion*/
+		JPanel panelAFDProcMin = new JPanel();
+		tabbedPane.addTab("Proceso de Minimizacion", panelAFDProcMin);
+		panelAFDProcMin.setLayout(null);
+		
+		
+		JScrollPane scrollPaneAFDProcMin = new JScrollPane();
+		scrollPaneAFDProcMin.setBounds(0, 0, 850, 610);
+		scrollPaneAFDProcMin.setAutoscrolls(true);
+		panelAFDProcMin.add(scrollPaneAFDProcMin);
+		
+		
+		JTextArea textAreaAFDProcMin = new JTextArea();
+		textAreaAFDProcMin.setEditable(false);
+		textAreaAFDProcMin.setText(Minimizacion.getLog().toString());
+		scrollPaneAFDProcMin.setViewportView(textAreaAFDProcMin);
+		/*Hasta aqui  el septimo tab-panel correspondiente a la impresion del proceso de minimizacion*/
 		
 		contentPane.add(tabbedPane);
 		
