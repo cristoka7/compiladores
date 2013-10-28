@@ -115,5 +115,16 @@ public class AlfabetoPersonalizado extends JFrame {
 		editorPane.setFont(new Font("Lucida Sans", Font.ITALIC, 12));
 		editorPane.setBounds(74, 297, 379, 20);
 		contentPane.add(editorPane);
+		
+		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				textFieldAlfabeto.setText("");
+				 textFieldExpReg.setText("");
+			}
+		});
+		btnLimpiar.setBounds(10, 251, 89, 23);
+		contentPane.add(btnLimpiar);
 	}
 }

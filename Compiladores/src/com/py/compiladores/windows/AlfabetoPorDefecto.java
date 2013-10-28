@@ -110,5 +110,15 @@ public class AlfabetoPorDefecto extends JFrame {
 		editorPane.setFont(new Font("Lucida Sans", Font.ITALIC, 12));
 		editorPane.setBounds(39, 290, 415, 20);
 		contentPane.add(editorPane);
+		
+		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				textField.setText("");
+			}
+		});
+		btnLimpiar.setBounds(24, 246, 89, 23);
+		contentPane.add(btnLimpiar);
 	}
 }
