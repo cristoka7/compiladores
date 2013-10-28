@@ -120,9 +120,9 @@ public class Grafo {
         String linea;
         for (Estado e : AF.getEstados()) {
             if (e.getEsFinal())
-                linea = "\"" + e + "\"" + "[shape=doublecircle";
+                linea = "\"" + e + "\"" + "[shape=doublecircle, color=red, style=filled ";
             else
-                linea = "\"" + e + "\"" + "[shape=circle";
+                linea = "\"" + e + "\"" + "[shape=circle, color=yellow, style=filled";
             
             if (e.equals(actual))
                 linea += ", style=filled, fillcolor=red, color=red];\n";
