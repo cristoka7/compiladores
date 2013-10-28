@@ -83,7 +83,7 @@ public class AnalizadorSintactico {
      * @throws java.lang.Exception Propaga la excepcion de Concat() y R1().
      */
     private AFN ExprReg() throws Exception {
-        log.agregar("ExprReg -> Concat R1").nuevaLinea();
+        log.agregar("ExprecionRegular -> Concatenar R1").nuevaLinea();
        
         AFN afn1 = Concat();
         AFN afn2 = R1();
@@ -102,7 +102,7 @@ public class AnalizadorSintactico {
         if (preanalisis.getIdentificador() == TokenExprReg.UNION) {
             match(preanalisis);
            
-            log.agregar("R1 -> \"|\" Concat R1").nuevaLinea();
+            log.agregar("R1 -> \"|\" Concatenar R1").nuevaLinea();
             AFN afn1 = Concat();
             AFN afn2 = R1();
 
@@ -123,7 +123,7 @@ public class AnalizadorSintactico {
      * @throws java.lang.Exception Propaga la excepcion de Grupo() y R2().
      */
     private AFN Concat() throws Exception {
-        log.agregar("Concat -> Grupo R2").nuevaLinea();
+        log.agregar("Concatenar -> Grupo R2").nuevaLinea();
        
         AFN afn1 = Grupo();
         AFN afn2 = R2();
@@ -164,7 +164,7 @@ public class AnalizadorSintactico {
      * @throws java.lang.Exception Propaga las excepciones de Elem() y Oper().
      */
     private AFN Grupo() throws Exception {
-        log.agregar("Grupo -> Elem Oper").nuevaLinea();
+        log.agregar("Grupo -> Elemento Operador").nuevaLinea();
        
         AFN afn = Elem();
         TokenExprReg operador = Oper();
@@ -194,12 +194,12 @@ public class AnalizadorSintactico {
             case OPCION:
                 operador = preanalisis.getIdentificador();
                
-                log.agregar("Oper -> " + preanalisis.getValor()).nuevaLinea();
+                log.agregar("Operador -> " + preanalisis.getValor()).nuevaLinea();
                 match(preanalisis);
                 break;
             default:
                 // Derivar en vacio
-                log.agregar("Oper -> " + Alfabeto.VACIO).nuevaLinea();
+                log.agregar("Operador -> " + Alfabeto.VACIO).nuevaLinea();
                 operador = TokenExprReg.DESCONOCIDO;
         }
        
@@ -220,14 +220,14 @@ public class AnalizadorSintactico {
        
         switch (preanalisis.getIdentificador()) {
             case PAREN_IZQUIERDO:
-                log.agregar("Elem -> \"(\" ExprReg \")\"").nuevaLinea();
+                log.agregar("Elemento -> \"(\" ExprecionRegular \")\"").nuevaLinea();
                
                 match(new Token(TokenExprReg.PAREN_IZQUIERDO));
                 afn = ExprReg();
                 match(new Token(TokenExprReg.PAREN_DERECHO));
                 break;
             case ALFABETO:
-                log.agregar("Elem -> SimLen").nuevaLinea();
+                log.agregar("Elemento -> SimpleElemento").nuevaLinea();
                
                 afn = SimLen();
                 break;
@@ -251,7 +251,7 @@ public class AnalizadorSintactico {
                 "\" no pertenece al alfabeto definido.");
         }
        
-        log.agregar("SimElem -> " + simbolo).nuevaLinea();
+        log.agregar("SimpleElemento -> " + simbolo).nuevaLinea();
        
         AFN afn = Thompson.basico(simbolo);
         match(preanalisis);
