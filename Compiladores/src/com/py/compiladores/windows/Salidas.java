@@ -36,6 +36,8 @@ public class Salidas extends JFrame {
 
 	private JPanel contentPane;
 	private javax.swing.JLabel Imagen;
+	private javax.swing.JLabel Imagen2;
+	private javax.swing.JLabel Imagen3;
 
 
 	/**
@@ -282,9 +284,9 @@ public class Salidas extends JFrame {
 		});
 		btnNewButton.setBounds(85, 106, 114, 53);
 		panelValid.add(btnNewButton);
-		/*Hasta aqui el noveno tab-panel correspondiente a la validacion de cadenas*/
+		/*Hasta aqui el octavo tab-panel correspondiente a la validacion de cadenas*/
 		
-		/*Aqui el octavo tab-panel correspondiente a la validacion de cadenas AFD*/
+		/*Aqui el noveno tab-panel correspondiente a la validacion de cadenas AFD*/
 		JPanel panelValidAFD = new JPanel();
 		tabbedPane.addTab("Validacion de AFD", panelValidAFD);
 		panelValidAFD.setLayout(null);
@@ -356,14 +358,54 @@ public class Salidas extends JFrame {
 
 		Imagen = new javax.swing.JLabel();
 		Imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        //Imagen.setIcon(resourceMap.getIcon("Imagen.icon")); // NOI18N
-        //Imagen.setText(resourceMap.getString("Imagen.text")); // NOI18N
         Imagen.setName("Imagen"); // NOI18N
         scrollPaneImagen.setViewportView(Imagen);
         
         Grafo brocha = new Grafo((Automata) salida);
         this.Imagen.setIcon(brocha.ManejarImagen(null));
+        /*Hasta Aqui la insercion de la imagen AFN*/
+        
+        /*Aqui la insercion de la imagen AFD*/
+		JPanel panelImagenAFD = new JPanel();
+		tabbedPane.addTab("Grafo AFD", panelImagenAFD);
+		panelImagenAFD.setLayout(null);
 		
+		
+		JScrollPane scrollPaneImagenAFD = new JScrollPane();
+		scrollPaneImagenAFD.setBounds(0, 0, 850, 610);
+		scrollPaneImagenAFD.setAutoscrolls(true);
+		panelImagenAFD.add(scrollPaneImagenAFD);
+
+		Imagen2 = new javax.swing.JLabel();
+		Imagen2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Imagen2.setName("Imagen"); // NOI18N
+        scrollPaneImagenAFD.setViewportView(Imagen2);
+        
+        Grafo brocha1 = new Grafo((Automata) afd);
+        this.Imagen2.setIcon(brocha1.ManejarImagen(null));
+        /*Hasta Aqui la insercion de la imagen AFD*/
+        
+        /*Aqui la insercion de la imagen AFD Minimo*/
+		JPanel panelImagenAFDMinimo = new JPanel();
+		tabbedPane.addTab("Grafo AFD Minimo", panelImagenAFDMinimo);
+		panelImagenAFDMinimo.setLayout(null);
+		
+		
+		JScrollPane scrollPaneImagenAFDMinimo = new JScrollPane();
+		scrollPaneImagenAFDMinimo.setBounds(0, 0, 850, 610);
+		scrollPaneImagenAFDMinimo.setAutoscrolls(true);
+		panelImagenAFDMinimo.add(scrollPaneImagenAFDMinimo);
+
+		Imagen3 = new javax.swing.JLabel();
+		Imagen3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Imagen3.setName("Imagen"); // NOI18N
+        scrollPaneImagenAFDMinimo.setViewportView(Imagen3);
+        
+        Grafo brocha2 = new Grafo((Automata) afdMin.getAfdPostIdentidades());
+        this.Imagen3.setIcon(brocha2.ManejarImagen(null));
+        /*Hasta Aqui la insercion de la imagen AFD Minimo*/
+        
+        
 		contentPane.add(tabbedPane);
 		
 		
