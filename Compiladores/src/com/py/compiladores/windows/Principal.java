@@ -1,32 +1,20 @@
 package com.py.compiladores.windows;
 
+import java.awt.Color;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-
-import java.awt.BorderLayout;
 import java.awt.Font;
-
-import javax.swing.SwingConstants;
-import javax.swing.JTextArea;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import javax.swing.BoxLayout;
-
-import java.awt.GridLayout;
-
-import javax.swing.JEditorPane;
-
-import java.awt.Canvas;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ButtonGroup;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
-import java.awt.Color;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JEditorPane;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
 
 public class Principal {
 

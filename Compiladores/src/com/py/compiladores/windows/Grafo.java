@@ -3,24 +3,21 @@
  */
 package com.py.compiladores.windows;
 
-import com.py.compiladores.analisis.Alfabeto;
-import com.py.compiladores.estructuras.Automata;
-import com.py.compiladores.estructuras.Conjunto;
-import com.py.compiladores.estructuras.Estado;
-import com.py.compiladores.estructuras.Transicion;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+
+import com.py.compiladores.analisis.Alfabeto;
+import com.py.compiladores.estructuras.Automata;
+import com.py.compiladores.estructuras.Conjunto;
+import com.py.compiladores.estructuras.Estado;
+import com.py.compiladores.estructuras.Transicion;
 
 /**
  * Clase donde se dibujan los grafos

@@ -1,13 +1,19 @@
 package com.py.compiladores.windows;
 
+import java.awt.Font;
+import java.awt.TextField;
+import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
-
-
-
 
 import com.py.compiladores.algoritmos.Minimizacion;
 import com.py.compiladores.algoritmos.Subconjuntos;
@@ -21,23 +27,12 @@ import com.py.compiladores.estructuras.GeneradorCodigo;
 import com.py.compiladores.estructuras.Log;
 import com.py.compiladores.estructuras.TablaTransicion;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
-import javax.swing.JLabel;
-
-import java.awt.TextField;
-
-import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.Toolkit;
-import java.awt.Font;
-
 public class Salidas extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private javax.swing.JLabel Imagen;
 	private javax.swing.JLabel Imagen2;
