@@ -55,9 +55,7 @@ public class GeneradorCodigo {
     }
     
     private static  String inicializarPInicial(){
-        return "\n" +
-                "package codigogenerado;\n" +
-                "\n" +
+        return 
                 "import java.io.BufferedReader;\n" +
                 "import java.io.IOException;\n" +
                 "import java.io.InputStreamReader;\n" +
@@ -73,6 +71,7 @@ public class GeneradorCodigo {
                 "     */\n" +
                 "    public static void main(String[] args) throws IOException {\n" +
                 "        // TODO code application logic here\n" +
+                "        System.out.println(\"Ingrese el valor a ser evaluado\");"+
                 "        StringBuffer bufferEntrada = new StringBuffer(new BufferedReader(new InputStreamReader(System.in)).readLine());\n" +
                 "        String entradaIni = bufferEntrada.toString();\n" +
                 "        int estadoInicial = 0;\n" +
