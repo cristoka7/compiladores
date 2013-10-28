@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 
 
 
+
 import com.py.compiladores.algoritmos.Minimizacion;
 import com.py.compiladores.algoritmos.Subconjuntos;
 import com.py.compiladores.analisis.Alfabeto;
@@ -16,6 +17,7 @@ import com.py.compiladores.estructuras.AFD;
 import com.py.compiladores.estructuras.AFDMin;
 import com.py.compiladores.estructuras.AFN;
 import com.py.compiladores.estructuras.Automata;
+import com.py.compiladores.estructuras.GeneradorCodigo;
 import com.py.compiladores.estructuras.Log;
 import com.py.compiladores.estructuras.TablaTransicion;
 
@@ -413,7 +415,9 @@ public class Salidas extends JFrame {
         
 		contentPane.add(tabbedPane);
 		
-		
+		/*Generamos el código para el alfabeto definido*/
+		GeneradorCodigo gen = new GeneradorCodigo(afd);
+        String codigo= gen.generaCodigo();
 	}
 }
 
