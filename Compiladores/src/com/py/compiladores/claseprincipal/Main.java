@@ -8,6 +8,7 @@ import com.py.compiladores.estructuras.AFD;
 import com.py.compiladores.estructuras.AFDMin;
 import com.py.compiladores.estructuras.AFN;
 import com.py.compiladores.estructuras.TablaTransicion;
+import com.py.compiladores.estructuras.GeneradorCodigo;
 
 public class Main {
 	
@@ -72,7 +73,9 @@ public class Main {
         
         System.out.printf("\nConjuntos estados producidos:\n%s", Subconjuntos.getLog());
         
-        
+        GeneradorCodigo gen = new GeneradorCodigo(afd);
+        String codigo= gen.generaCodigo();
+       
         /*
          *  CONVERSION AFD -> AFD MINIMO
          *  ALGORITMO DE MINIMIZACION 
