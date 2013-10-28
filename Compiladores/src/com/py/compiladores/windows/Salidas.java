@@ -31,6 +31,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
+import java.awt.Font;
 
 public class Salidas extends JFrame {
 
@@ -45,6 +47,8 @@ public class Salidas extends JFrame {
 	 * @throws Exception 
 	 */
 	public Salidas(String alfabeto, String ExpReg) throws Exception {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Salidas.class.getResource("/com/sun/java/swing/plaf/motif/icons/DesktopIcon.gif")));
+		setResizable(false);
 		setTitle("Salidas");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 900, 700);
@@ -76,6 +80,7 @@ public class Salidas extends JFrame {
 		panelAFN.add(scrollPane);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textArea.setEditable(false);
 		textArea.setText(salida.toString());
 		scrollPane.setViewportView(textArea);
