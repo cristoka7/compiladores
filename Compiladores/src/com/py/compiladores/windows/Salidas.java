@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 
 
 
+
 import com.py.compiladores.algoritmos.Minimizacion;
 import com.py.compiladores.algoritmos.Subconjuntos;
 import com.py.compiladores.analisis.Alfabeto;
@@ -16,6 +17,7 @@ import com.py.compiladores.estructuras.AFD;
 import com.py.compiladores.estructuras.AFDMin;
 import com.py.compiladores.estructuras.AFN;
 import com.py.compiladores.estructuras.Automata;
+import com.py.compiladores.estructuras.GeneradorCodigo;
 import com.py.compiladores.estructuras.Log;
 import com.py.compiladores.estructuras.TablaTransicion;
 
@@ -31,6 +33,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
+import java.awt.Font;
 
 public class Salidas extends JFrame {
 
@@ -45,6 +49,8 @@ public class Salidas extends JFrame {
 	 * @throws Exception 
 	 */
 	public Salidas(String alfabeto, String ExpReg) throws Exception {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Salidas.class.getResource("/com/sun/java/swing/plaf/motif/icons/DesktopIcon.gif")));
+		setResizable(false);
 		setTitle("Salidas");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 900, 700);
@@ -76,6 +82,7 @@ public class Salidas extends JFrame {
 		panelAFN.add(scrollPane);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textArea.setEditable(false);
 		textArea.setText(salida.toString());
 		scrollPane.setViewportView(textArea);
@@ -408,7 +415,9 @@ public class Salidas extends JFrame {
         
 		contentPane.add(tabbedPane);
 		
-		
+		/*Generamos el código para el alfabeto definido*/
+		GeneradorCodigo gen = new GeneradorCodigo(afd);
+        String codigo= gen.generaCodigo();
 	}
 }
 
