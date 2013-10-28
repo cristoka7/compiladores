@@ -5,7 +5,6 @@ package com.py.compiladores.windows;
 
 import com.py.compiladores.analisis.Alfabeto;
 import com.py.compiladores.estructuras.Automata;
-import com.py.compiladores.estructuras.Configuracion;
 import com.py.compiladores.estructuras.Conjunto;
 import com.py.compiladores.estructuras.Estado;
 import com.py.compiladores.estructuras.Transicion;
