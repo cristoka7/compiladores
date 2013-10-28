@@ -157,7 +157,7 @@ public class GeneradorCodigo {
 		PrintWriter pw = null;
 
 		try {
-			fichero = new FileWriter("C:\\codigoGenerado.java");
+			fichero = new FileWriter("C:\\CodigoGenerado.java");
 			pw = new PrintWriter(fichero);
 
 			pw.println(getpInicial()+getpMedia1()+getpMedia2()+getpFinal());
