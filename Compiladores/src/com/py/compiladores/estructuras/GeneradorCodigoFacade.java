@@ -1,3 +1,4 @@
+package com.py.compiladores.estructuras;
 public class GeneradorCodigoFacade {
     private GeneradorCodigo generador;
 
